@@ -1,0 +1,22 @@
+#show-post {
+    background-color:#E9ECEF ;
+}
+
+ ul li{
+    display: inline-block;
+    color: white;
+    text-decoration: yellow;
+    border: 1px solid transparent;
+   
+}
+
+#image-resize {
+    height: 30vh;
+}
+#footer{
+    color: white;
+}
+
+#box {
+    margin-bottom: 27px;
+}

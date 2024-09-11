@@ -1,0 +1,24 @@
+<%- include ('../partials/header'); -%>
+<div class="container">
+    <header class="jumbotron">
+      <div class="container">
+        <h1><i class="fa fa-camera-retro" aria-hidden="true"></i>  Welcome To ShitPost !!!</h1>
+        <p>View our random shit post from all over the places</p>
+        <p><a class="btn btn-primary btn-large" href="/posts/new">Add new post</a></p>
+     </div>
+    </header> 
+
+  <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+      <% posts.forEach(function(posts){ %>
+         <div class="col-md-4 col-sm-6">
+            <div class="img-thumbnail" id="box">
+               <img id="image-resize" class="img-thumbnail" src=" <%= posts.image %> ">
+               <div class="caption "><h4><%= posts.name %></h4></div>
+               <p><a href="/posts/<%= posts._id %>" class="btn btn-primary">More Info</a></p>
+            </div>
+         </div>
+      <%}); %>
+   </div>
+</div>
+<h3><center><strong><p id="footer" style="padding-top: 8.5vh;">Made By <em>RAHUL JHA</em></p></strong></center></h3>
+<%- include ('../partials/footer'); -%>

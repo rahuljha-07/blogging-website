@@ -1,0 +1,52 @@
+<%- include ('../partials/header'); -%>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="img-thumbnail" id="show-post">
+               <div><center><img class="img-thumbnail" src="<%= post.image %>"></center></div>
+               <div class="caption-full">
+                  <h4 class="pull-right"><em>Posted by :<%= post.author.username %></em></h4>
+                  <h1><a><%= post.name %></a></h1>
+                  <p><%= post.description %></p>
+                
+                 <% if(currentuser && post.author.id.equals(currentuser._id)){ %>
+                       <div>
+                            <center><ul>
+                                        <li><p><a class="btn btn-warning" href="/posts/<%= post._id %>/edit">Edit</a></p></li>
+                                        <li> <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                                                   <button class="btn btn-danger">Delete</button>
+                                             </form></li>
+                                        </ul></center>
+                       </div>
+                 <% } %>         
+               </div>
+               <div class="well">
+                    <div class="text-right"><a class="btn btn-success" href="/posts/<%= post._id %>/comments/new">Add new comment</a></div>
+                    <div>
+                         <% post.comments.forEach(function(comment){ %>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <hr>
+                                    <h4><strong><%= comment.author.username %></strong></h4>
+                                    <p><%= comment.text %></p>
+                                    <% if(currentuser && comment.author.id.equals(currentuser._id)){ %>
+                                       <div>
+                                           <center><ul>
+                                                    <li><p><a class="btn btn-xs btn-warning" href="/posts/<%= post._id%>/comments/<%= comment._id%>/edit">Edit</a></p></li>
+                                                    <li><form action="/posts/<%= post._id%>/comments/<%= comment._id%>/?_method=DELETE" method="POST">
+                                                             <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                                                        </form></li>
+                                                      </ul></center>
+                                       </div>
+                                    <% } %>
+                                 </div>
+                             </div>
+                         <% }) %>
+                     </div>
+             </div>
+         </div>
+       </div>
+   </div>
+</div>
+<h3><center><strong><p id="footer" style="padding-top: 60px;">Made By <em>RAHUL JHA</em></p></strong></center></h3>
+<%- include ('../partials/footer'); -%>
